@@ -7,5 +7,18 @@
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd          
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-	<bean id="iocDemoService" class="pko.demo.springIoc.TwoIocDemoService" />
+	<bean id="iocDemoService" class="pko.demo.springIoc.TwoIocDemoService">
+		<constructor-arg>
+			<value>constructorArg</value>
+		</constructor-arg>
+		<property name="demoMessage">
+			<value>demoMessage</value>
+		</property>
+		<property name="demoMessages">
+			<list>
+				<value>demoMessage1</value>
+				<value>demoMessage2</value>
+			</list>
+		</property>
+	</bean>
 </beans>

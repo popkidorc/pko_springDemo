@@ -5,19 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 
-public class DefaultFooService implements FooService {
-
-	private DriverManagerDataSource dataSource;
-
-	public DriverManagerDataSource getDataSource() {
-		return dataSource;
-	}
-
-	public void setDataSource(DriverManagerDataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+public class DefaultFooService extends JdbcDaoSupport implements FooService {
 
 	public Foo getFoo(String fooName) {
 		throw new UnsupportedOperationException();
@@ -38,12 +29,14 @@ public class DefaultFooService implements FooService {
 	}
 
 	private void insertSingletonFoo(Foo foo) {
+		StringBuffer sql = new StringBuffer(
+				"INSERT INTO user (userId) values ('" + foo.name + "'); ");
+		System.out.println(sql.toString());
+		// this.getJdbcTemplate().update(sql.toString());
 		Connection connection = null;
 		try {
-			connection = dataSource.getConnection();
-			StringBuffer sql = new StringBuffer(
-					"INSERT INTO user (userId) values ('" + foo.name + "'); ");
-			System.out.println(sql.toString());
+			connection = DataSourceUtils.getConnection(getDataSource());
+//			connection = getDataSource().getConnection();
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql.toString());
 			preparedStatement.executeUpdate();

@@ -23,7 +23,7 @@
 	</bean>
 
 	<bean id="fooService" class="pko.demo.springTransaction.DefaultFooService">
-		<property name="dataSource" ref="dataSource"></property>
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
 	</bean>
 
 	<bean id="dataSource"
@@ -31,8 +31,13 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/popkidorc?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull" />
-		<property name="username" value="rxdm" />
-		<property name="password" value="rxdm" />
+		<property name="username" value="pkouser" />
+		<property name="password" value="258456" />
+	</bean>
+
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<bean id="transactionManager"
@@ -49,7 +54,7 @@
 
 	<aop:config>
 		<aop:pointcut id="forPointcut"
-			expression="execution(* pko.demo.springTransaction.FooService.*(..))" />
+			expression="execution(* pko.demo.*.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="forPointcut" />
 	</aop:config>
 </beans>

@@ -20,8 +20,8 @@ public class TransactionDemoTest {
 		FooService fooService = (FooService) applicationContext
 				.getBean("fooService");
 		List<Foo> fooes = new ArrayList<Foo>();
-		fooes.add(new Foo("111"));
-		fooes.add(new Foo("111"));
+		fooes.add(new Foo("6"));
+		fooes.add(new Foo("6"));
 		fooService.insertFoo(fooes);
 	}
 }

@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -12,7 +12,7 @@ import pko.demo.springIoc.IIocDemoService;
 
 public class IocDemoTest {
 
-	@Test
+	// @Test
 	public void doOriginalIOC() {
 		System.out.println("====doOriginalIOC====");
 
@@ -38,19 +38,19 @@ public class IocDemoTest {
 		System.out.println(iocDemoService.doSomethings());
 	}
 
-	// @Test
+	@Test
 	public void doSimpleIOC() {
 		System.out.println("====doSimpleIOC====");
 
 		/***** 初始化IOC容器、解析加载、注册beanDefinition start *****/
-		// ApplicationContext applicationContext = new
-		// ClassPathXmlApplicationContext(
-		// "spring/ioc/applicationContext.xml");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+				"spring/ioc/applicationContext.xml");
 		// ApplicationContext applicationContext = new
 		// FileSystemXmlApplicationContext(
 		// "classpath:spring/ioc/applicationContext.xml");
-		ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
-				"src/main/resources/spring/ioc/applicationContext.xml");
+		// ApplicationContext applicationContext = new
+		// FileSystemXmlApplicationContext(
+		// "src/main/resources/spring/ioc/applicationContext.xml");
 		/***** 初始化IOC容器、解析加载、注册beanDefinition end *****/
 
 		/***** 注入bean start *****/

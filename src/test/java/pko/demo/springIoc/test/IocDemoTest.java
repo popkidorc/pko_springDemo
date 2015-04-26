@@ -54,8 +54,11 @@ public class IocDemoTest {
 		/***** 初始化IOC容器、解析加载、注册beanDefinition end *****/
 
 		/***** 注入bean start *****/
+//		IIocDemoService iocDemoService = (IIocDemoService) applicationContext
+//				.getBean("iocDemoService");
+		/***** 注入bean start *****/
 		IIocDemoService iocDemoService = (IIocDemoService) applicationContext
-				.getBean("iocDemoService");
+				.getBean("testAOP");
 		/***** 注入bean end *****/
 
 		System.out.println(iocDemoService.doSomethings());

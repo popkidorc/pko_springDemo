@@ -39,5 +39,5 @@ public class RedisDemoTest {
 		for (Map.Entry entry : maps.entrySet()) {
 			System.out.print(entry.getKey() + ":" + entry.getValue() + "\t");
 		}
-	}
+	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 }

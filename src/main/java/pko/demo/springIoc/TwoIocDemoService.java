@@ -2,7 +2,7 @@ package pko.demo.springIoc;
 
 import java.util.List;
 
-public class TwoIocDemoService implements IIocDemoService {
+public class TwoIocDemoService{
 
 	private String constructorArg;
 
@@ -31,8 +31,9 @@ public class TwoIocDemoService implements IIocDemoService {
 		this.demoMessages = demoMessages;
 	}
 
-	@Override
+//	@Override
 	public String doSomethings() {
+		System.out.println("invoke==doSomethings");
 		return "=============Two====IocDemoService doSomethings============"
 				+ constructorArg + "====" + demoMessage + "====" + demoMessages;
 	}

@@ -22,7 +22,7 @@
 		</property>
 	</bean>
 
-	<bean id="fooService" class="pko.demo.springTransaction.DefaultFooService">
+	<!-- <bean id="fooService" class="pko.demo.springTransaction.DefaultFooService">
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
 	</bean>
 
@@ -56,5 +56,14 @@
 		<aop:pointcut id="forPointcut"
 			expression="execution(* pko.demo.*.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="forPointcut" />
-	</aop:config>
+	</aop:config> -->
+	<bean id="testAOP" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="iocDemoService"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>advisorBean</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="advisorBean" class="pko.demo.springAop.AdviceDemo" />
 </beans>

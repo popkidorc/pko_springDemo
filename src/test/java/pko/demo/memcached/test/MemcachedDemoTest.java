@@ -29,7 +29,8 @@ public class MemcachedDemoTest {
 			Future<Object> f = c.asyncGet("someKey");
 			try {
 				myObj = f.get(5, TimeUnit.SECONDS);
-				System.out.println(myObj);
+				System.out
+						.println(myObj + "=====" + c.gets("someKey").getCas());
 				// throws expecting InterruptedException, ExecutionException
 				// or TimeoutException
 			} catch (Exception e) {
